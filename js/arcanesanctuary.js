@@ -13,14 +13,9 @@ function draw(){
           Math.floor(Math.random() * height),// Y
           Math.floor(Math.random() * 3) + 1,// Speed
         ]);
-
-        create_star = false;
-
-    }else{
-        create_star = true;
     }
+    create_star = !create_star;
     
-
     loop_counter = stars.length - 1;
     buffer.fillStyle = '#fff';
     do{
