@@ -6,38 +6,16 @@ function draw(){
       height
     );
 
-    // Add a randomly placed star every other frame.
-    if(create_star){
-        stars.push([
-          width,// X
-          Math.floor(Math.random() * height),// Y
-          Math.floor(Math.random() * 3) + 1,// Speed
-        ]);
-    }
-    create_star = !create_star;
-    
     loop_counter = stars.length - 1;
     buffer.fillStyle = '#fff';
     do{
-        if(stars[loop_counter][0] < 0){
-            // Remove stars that reached left side of screen.
-            stars.splice(
-              loop_counter,
-              1
-            );
-
-        }else{
-            // Update star position.
-            stars[loop_counter][0] -= stars[loop_counter][2];
-
-            // Draw star.
-            buffer.fillRect(
-              stars[loop_counter][0],
-              stars[loop_counter][1],
-              1,
-              1
-            );
-        }
+        // Draw star.
+        buffer.fillRect(
+          stars[loop_counter][0],
+          stars[loop_counter][1],
+          1,
+          1
+        );
     }while(loop_counter--);
 
     canvas.clearRect(
@@ -51,6 +29,52 @@ function draw(){
       0,
       0
     );
+
+    window.requestAnimationFrame(draw);
+}
+
+function init(){
+    push_star();
+    resize();
+    window.onresize = resize;
+
+    window.requestAnimationFrame(draw);
+    setInterval(
+      'logic()',
+      30
+    );
+}
+
+function logic(){
+    // Add a randomly placed star every other frame.
+    if(create_star){
+        push_star();
+    }
+    create_star = !create_star;
+
+    loop_counter = stars.length - 1;
+    buffer.fillStyle = '#fff';
+    do{
+        if(stars[loop_counter][0] < 0){
+            // Remove stars that reached left side of screen.
+            stars.splice(
+              loop_counter,
+              1
+            );
+
+        }else{
+            // Update star position.
+            stars[loop_counter][0] -= stars[loop_counter][2];
+        }
+    }while(loop_counter--);
+}
+
+function push_star(){
+    stars.push([
+      width,// X
+      Math.floor(Math.random() * height),// Y
+      Math.floor(Math.random() * 3) + 1,// Speed
+    ]);
 }
 
 function resize(){
@@ -70,10 +94,4 @@ var height = 0;
 var stars = [];
 var width = 0;
 
-resize();
-window.onresize = resize;
-
-setInterval(
-  'draw()',
-  30
-);
+window.onload = init;
