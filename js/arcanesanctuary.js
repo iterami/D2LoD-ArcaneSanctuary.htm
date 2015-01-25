@@ -33,18 +33,6 @@ function draw(){
     window.requestAnimationFrame(draw);
 }
 
-function init(){
-    push_star();
-    resize();
-    window.onresize = resize;
-
-    window.requestAnimationFrame(draw);
-    setInterval(
-      'logic()',
-      30
-    );
-}
-
 function logic(){
     // Add a randomly placed star every other frame.
     if(create_star){
@@ -94,4 +82,14 @@ var height = 0;
 var stars = [];
 var width = 0;
 
-window.onload = init;
+window.onload = function(){
+    push_star();
+    resize();
+    window.onresize = resize;
+
+    window.requestAnimationFrame(draw);
+    setInterval(
+      'logic()',
+      30
+    );
+};
