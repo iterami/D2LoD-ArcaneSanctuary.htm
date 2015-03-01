@@ -6,17 +6,15 @@ function draw(){
       height
     );
 
-    loop_counter = stars.length - 1;
     buffer.fillStyle = '#fff';
-    do{
-        // Draw star.
+    for(var star in stars){
         buffer.fillRect(
-          stars[loop_counter][0],
-          stars[loop_counter][1],
+          stars[star][0],
+          stars[star][1],
           1,
           1
         );
-    }while(loop_counter--);
+    }
 
     canvas.clearRect(
       0,
@@ -40,21 +38,18 @@ function logic(){
     }
     create_star = !create_star;
 
-    loop_counter = stars.length - 1;
     buffer.fillStyle = '#fff';
-    do{
-        if(stars[loop_counter][0] < 0){
+    for(var star in stars){
+        stars[star][0] -= stars[star][2];
+
+        if(stars[star][0] < 0){
             // Remove stars that reached left side of screen.
             stars.splice(
-              loop_counter,
+              star,
               1
             );
-
-        }else{
-            // Update star position.
-            stars[loop_counter][0] -= stars[loop_counter][2];
         }
-    }while(loop_counter--);
+    }
 }
 
 function push_star(){
