@@ -34,7 +34,11 @@ function draw(){
 function logic(){
     // Add a randomly placed star every other frame.
     if(create_star){
-        push_star();
+        stars.push([
+          width,// X
+          Math.floor(Math.random() * height),// Y
+          Math.floor(Math.random() * 3) + 1,// Speed
+        ]);
     }
     create_star = !create_star;
 
@@ -47,14 +51,6 @@ function logic(){
             delete stars[star];
         }
     }
-}
-
-function push_star(){
-    stars.push([
-      width,// X
-      Math.floor(Math.random() * height),// Y
-      Math.floor(Math.random() * 3) + 1,// Speed
-    ]);
 }
 
 function resize(){
@@ -75,7 +71,6 @@ var stars = [];
 var width = 0;
 
 window.onload = function(){
-    push_star();
     resize();
     window.onresize = resize;
 
