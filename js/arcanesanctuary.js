@@ -46,8 +46,8 @@ function logic(){
     for(var star in stars){
         stars[star][0] -= stars[star][2];
 
+        // Remove stars that reached left side of screen.
         if(stars[star][0] < 0){
-            // Remove stars that reached left side of screen.
             delete stars[star];
         }
     }
