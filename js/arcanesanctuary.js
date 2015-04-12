@@ -9,8 +9,8 @@ function draw(){
     buffer.fillStyle = '#fff';
     for(var star in stars){
         buffer.fillRect(
-          stars[star][0],
-          stars[star][1],
+          stars[star]['x'],
+          stars[star]['y'],
           1,
           1
         );
@@ -34,20 +34,20 @@ function draw(){
 function logic(){
     // Add a randomly placed star every other frame.
     if(create_star){
-        stars.push([
-          width,// X
-          Math.floor(Math.random() * height),// Y
-          Math.floor(Math.random() * 3) + 1,// Speed
-        ]);
+        stars.push({
+          'speed': Math.floor(Math.random() * 3) + 1,
+          'x': width,
+          'y': Math.floor(Math.random() * height),
+        });
     }
     create_star = !create_star;
 
     buffer.fillStyle = '#fff';
     for(var star in stars){
-        stars[star][0] -= stars[star][2];
+        stars[star]['x'] -= stars[star]['speed'];
 
         // Remove stars that reached left side of screen.
-        if(stars[star][0] < 0){
+        if(stars[star]['x'] < 0){
             delete stars[star];
         }
     }
