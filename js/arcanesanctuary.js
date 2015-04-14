@@ -48,7 +48,10 @@ function logic(){
 
         // Remove stars that reached left side of screen.
         if(stars[star]['x'] < 0){
-            delete stars[star];
+            stars.splice(
+              star,
+              1
+            );
         }
     }
 }
