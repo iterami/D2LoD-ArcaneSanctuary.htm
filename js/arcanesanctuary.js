@@ -8,7 +8,6 @@ function draw(){
       height
     );
 
-    buffer.fillStyle = '#fff';
     for(var star in stars){
         buffer.fillRect(
           stars[star]['x'],
@@ -44,7 +43,6 @@ function logic(){
     }
     create_star = !create_star;
 
-    buffer.fillStyle = '#fff';
     for(var star in stars){
         stars[star]['x'] -= stars[star]['speed'];
 
@@ -82,6 +80,8 @@ var width = 0;
 window.onload = function(){
     resize();
     window.onresize = resize;
+
+    buffer.fillStyle = '#fff';
 
     window.requestAnimationFrame(draw);
     window.setInterval(
