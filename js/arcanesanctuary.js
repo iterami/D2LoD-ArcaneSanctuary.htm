@@ -64,6 +64,8 @@ function resize(){
     width = window.innerWidth;
     document.getElementById('buffer').width = width;
     document.getElementById('canvas').width = width;
+
+    buffer.fillStyle = '#fff';
 }
 
 var buffer = document.getElementById('buffer').getContext('2d', {
@@ -79,9 +81,6 @@ var width = 0;
 
 window.onload = function(){
     resize();
-    window.onresize = resize;
-
-    buffer.fillStyle = '#fff';
 
     window.requestAnimationFrame(draw);
     window.setInterval(
@@ -89,3 +88,5 @@ window.onload = function(){
       30
     );
 };
+
+window.onresize = resize;
