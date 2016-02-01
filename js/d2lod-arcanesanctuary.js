@@ -84,7 +84,7 @@ window.onload = function(){
 
     window.requestAnimationFrame(draw);
     window.setInterval(
-      'logic()',
+      logic,
       30
     );
 };
