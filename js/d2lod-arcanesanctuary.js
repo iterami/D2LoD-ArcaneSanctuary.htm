@@ -1,13 +1,6 @@
 'use strict';
 
-function draw(){
-    buffer.clearRect(
-      0,
-      0,
-      width,
-      height
-    );
-
+function draw_logic(){
     for(var star in stars){
         buffer.fillRect(
           stars[star]['x'],
@@ -16,20 +9,6 @@ function draw(){
           1
         );
     }
-
-    canvas.clearRect(
-      0,
-      0,
-      width,
-      height
-    );
-    canvas.drawImage(
-      document.getElementById('buffer'),
-      0,
-      0
-    );
-
-    window.requestAnimationFrame(draw);
 }
 
 function logic(){
@@ -56,37 +35,12 @@ function logic(){
     }
 }
 
-function resize(){
-    height = window.innerHeight;
-    document.getElementById('buffer').height = height;
-    document.getElementById('canvas').height = height;
-
-    width = window.innerWidth;
-    document.getElementById('buffer').width = width;
-    document.getElementById('canvas').width = width;
-
+function resize_logic(){
     buffer.fillStyle = '#fff';
 }
 
-var buffer = document.getElementById('buffer').getContext('2d', {
-  'alpha': false,
-});
-var canvas = document.getElementById('canvas').getContext('2d', {
-  'alpha': false,
-});
 var create_star = true;
-var height = 0;
 var stars = [];
-var width = 0;
 
-window.onload = function(){
-    resize();
-
-    window.requestAnimationFrame(draw);
-    window.setInterval(
-      logic,
-      30
-    );
-};
-
+window.onload = init_canvas;
 window.onresize = resize;
