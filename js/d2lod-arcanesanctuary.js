@@ -43,4 +43,3 @@ var create_star = true;
 var stars = [];
 
 window.onload = init_canvas;
-window.onresize = resize;
