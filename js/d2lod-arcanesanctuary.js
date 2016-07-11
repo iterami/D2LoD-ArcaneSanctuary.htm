@@ -2,7 +2,7 @@
 
 function draw_logic(){
     for(var star in stars){
-        buffer.fillRect(
+        canvas_buffer.fillRect(
           stars[star]['x'],
           stars[star]['y'],
           1,
@@ -16,8 +16,8 @@ function logic(){
     if(create_star){
         stars.push({
           'speed': Math.floor(Math.random() * 3) + 1,
-          'x': width,
-          'y': Math.floor(Math.random() * height),
+          'x': canvas_width,
+          'y': Math.floor(Math.random() * canvas_height),
         });
     }
     create_star = !create_star;
@@ -36,10 +36,10 @@ function logic(){
 }
 
 function resize_logic(){
-    buffer.fillStyle = '#fff';
+    canvas_buffer.fillStyle = '#fff';
 }
 
 var create_star = true;
 var stars = [];
 
-window.onload = init_canvas;
+window.onload = canvas_init;
