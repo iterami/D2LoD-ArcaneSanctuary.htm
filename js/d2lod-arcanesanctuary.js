@@ -15,9 +15,12 @@ function logic(){
     // Add a randomly placed star every other frame.
     if(create_star){
         stars.push({
-          'speed': Math.floor(Math.random() * 3) + 1,
+          'speed': random_integer(
+            3,
+            'ceil'
+          ),
           'x': canvas_width,
-          'y': Math.floor(Math.random() * canvas_height),
+          'y': random_integer(canvas_height),
         });
     }
     create_star = !create_star;
