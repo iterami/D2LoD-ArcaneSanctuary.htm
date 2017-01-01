@@ -15,12 +15,14 @@ function logic(){
     // Add a randomly placed star every other frame.
     if(create_star){
         stars.push({
-          'speed': random_integer(
-            3,
-            'ceil'
-          ),
+          'speed': random_integer({
+            'max': 3,
+            'todo': 'ceil',
+          }),
           'x': canvas_width,
-          'y': random_integer(canvas_height),
+          'y': random_integer({
+            'max': canvas_height,
+          }),
         });
     }
     create_star = !create_star;
