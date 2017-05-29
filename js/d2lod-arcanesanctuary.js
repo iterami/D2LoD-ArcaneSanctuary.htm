@@ -40,11 +40,13 @@ function logic(){
     }
 }
 
+function repo_init(){
+    canvas_init();
+}
+
 function resize_logic(){
     canvas_buffer.fillStyle = '#fff';
 }
 
 var create_star = true;
 var stars = [];
-
-window.onload = canvas_init;
