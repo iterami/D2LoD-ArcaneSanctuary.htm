@@ -41,6 +41,9 @@ function logic(){
 }
 
 function repo_init(){
+    core_repo_init({
+      'title': 'D2LoD-ArcaneSanctuary.htm',
+    });
     canvas_init();
 }
 
