@@ -1,14 +1,19 @@
 'use strict';
 
 function draw_logic(){
-    for(var entity in core_entities){
-        canvas_buffer.fillRect(
-          core_entities[entity]['x'],
-          core_entities[entity]['y'],
-          1,
-          1
-        );
-    }
+    core_group_modify({
+      'groups': [
+        'canvas',
+      ],
+      'todo': function(entity){
+          canvas_buffer.fillRect(
+            core_entities[entity]['x'],
+            core_entities[entity]['y'],
+            1,
+            1
+          );
+      },
+    });
 }
 
 function logic(){
@@ -29,18 +34,23 @@ function logic(){
     }
     create_star = !create_star;
 
-    for(var entity in core_entities){
-        core_entities[entity]['x'] -= core_entities[entity]['speed'];
+    core_group_modify({
+      'groups': [
+        'canvas',
+      ],
+      'todo': function(entity){
+          core_entities[entity]['x'] -= core_entities[entity]['speed'];
 
-        // Remove stars that reached left side of screen.
-        if(core_entities[entity]['x'] < 0){
-            core_entity_remove({
-              'entities': [
-                entity,
-              ],
-            });
-        }
-    }
+          // Remove stars that reached left side of screen.
+          if(core_entities[entity]['x'] < 0){
+              core_entity_remove({
+                'entities': [
+                  entity,
+                ],
+              });
+          }
+      },
+    });
 }
 
 function repo_init(){
