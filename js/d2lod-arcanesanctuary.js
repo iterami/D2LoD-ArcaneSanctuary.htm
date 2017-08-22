@@ -17,7 +17,7 @@ function draw_logic(){
 }
 
 function logic(){
-    // Add a randomly placed star every other frame.
+    // Sometimes add a randomly placed star.
     if(create_star){
         core_entity_create({
           'properties': {
