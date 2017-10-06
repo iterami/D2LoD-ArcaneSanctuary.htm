@@ -25,9 +25,9 @@ function logic(){
               'max': 3,
               'todo': 'ceil',
             }),
-            'x': canvas_width,
+            'x': canvas_properties['width'],
             'y': core_random_integer({
-              'max': canvas_height,
+              'max': canvas_properties['height'],
             }),
           },
         });
