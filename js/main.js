@@ -17,22 +17,18 @@ function draw_logic(){
 }
 
 function logic(){
-    // Sometimes add a randomly placed star.
-    if(create_star){
-        core_entity_create({
-          'properties': {
-            'speed': core_random_integer({
-              'max': 3,
-              'todo': 'ceil',
-            }),
-            'x': canvas_properties['width'],
-            'y': core_random_integer({
-              'max': canvas_properties['height'],
-            }),
-          },
-        });
-    }
-    create_star = !create_star;
+    core_entity_create({
+      'properties': {
+        'speed': core_random_integer({
+          'max': 3,
+          'todo': 'ceil',
+        }),
+        'x': canvas_properties['width'],
+        'y': core_random_integer({
+          'max': canvas_properties['height'],
+        }),
+      },
+    });
 
     core_group_modify({
       'groups': [
@@ -59,5 +55,3 @@ function repo_init(){
     });
     canvas_init();
 }
-
-var create_star = true;
