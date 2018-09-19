@@ -18,6 +18,7 @@ function draw_logic(){
 
 function logic(){
     core_entity_create({
+      'id': id_count,
       'properties': {
         'speed': core_random_integer({
           'max': 3,
@@ -29,6 +30,7 @@ function logic(){
         }),
       },
     });
+    id_count++;
 
     core_group_modify({
       'groups': [
@@ -51,6 +53,9 @@ function logic(){
 
 function repo_init(){
     core_repo_init({
+      'globals': {
+        'id_count': 0,
+      },
       'title': 'D2LoD-ArcaneSanctuary.htm',
     });
     canvas_init();
