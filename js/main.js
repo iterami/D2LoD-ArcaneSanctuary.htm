@@ -1,14 +1,14 @@
 'use strict';
 
 function draw_logic(){
-    core_group_modify({
+    entity_group_modify({
       'groups': [
         'canvas',
       ],
       'todo': function(entity){
           canvas_buffer.fillRect(
-            core_entities[entity]['x'],
-            core_entities[entity]['y'],
+            entity_entities[entity]['x'],
+            entity_entities[entity]['y'],
             1,
             1
           );
@@ -17,7 +17,7 @@ function draw_logic(){
 }
 
 function logic(){
-    core_entity_create({
+    entity_create({
       'properties': {
         'speed': core_random_integer({
           'max': 3,
@@ -30,16 +30,16 @@ function logic(){
       },
     });
 
-    core_group_modify({
+    entity_group_modify({
       'groups': [
         'canvas',
       ],
       'todo': function(entity){
-          core_entities[entity]['x'] -= core_entities[entity]['speed'];
+          entity_entities[entity]['x'] -= entity_entities[entity]['speed'];
 
           // Remove stars that reached left side of screen.
-          if(core_entities[entity]['x'] < 0){
-              core_entity_remove({
+          if(entity_entities[entity]['x'] < 0){
+              entity_remove({
                 'entities': [
                   entity,
                 ],
