@@ -1,6 +1,6 @@
 'use strict';
 
-function draw_logic(){
+function repo_drawlogic(){
     entity_group_modify({
       'groups': [
         'canvas',
@@ -16,7 +16,7 @@ function draw_logic(){
     });
 }
 
-function logic(){
+function repo_logic(){
     entity_create({
       'properties': {
         'speed': core_random_integer({
