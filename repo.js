@@ -6,7 +6,7 @@ function repo_drawlogic(){
         'canvas',
       ],
       'todo': function(entity){
-          canvas_buffer.fillRect(
+          canvas.fillRect(
             entity_entities[entity]['x'],
             entity_entities[entity]['y'],
             1,
