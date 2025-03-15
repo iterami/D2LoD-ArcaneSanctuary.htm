@@ -7,8 +7,8 @@ function repo_drawlogic(){
       ],
       'todo': function(entity){
           canvas.fillRect(
-            entity_entities[entity]['x'],
-            entity_entities[entity]['y'],
+            entity['x'],
+            entity['y'],
             1,
             1
           );
@@ -35,12 +35,12 @@ function repo_logic(){
         'canvas',
       ],
       'todo': function(entity){
-          entity_entities[entity]['x'] -= entity_entities[entity]['speed'];
+          entity['x'] -= entity['speed'];
 
-          if(entity_entities[entity]['x'] < 0){
+          if(entity['x'] < 0){
               entity_remove({
                 'entities': [
-                  entity,
+                  entity['id'],
                 ],
               });
           }
