@@ -16,6 +16,13 @@ function repo_drawlogic(){
     });
 }
 
+function repo_init(){
+    core_repo_init({
+      'title': 'D2LoD-ArcaneSanctuary.htm',
+    });
+    canvas_init();
+}
+
 function repo_logic(){
     entity_create({
       'properties': {
@@ -46,11 +53,4 @@ function repo_logic(){
           }
       },
     });
-}
-
-function repo_init(){
-    core_repo_init({
-      'title': 'D2LoD-ArcaneSanctuary.htm',
-    });
-    canvas_init();
 }
