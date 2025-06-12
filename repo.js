@@ -26,14 +26,9 @@ function repo_init(){
 function repo_logic(){
     entity_create({
       'properties': {
-        'speed': core_random_integer({
-          'max': 3,
-          'todo': 'ceil',
-        }),
+        'speed': core_random_integer(3) + 1,
         'x': canvas_properties['width'],
-        'y': core_random_integer({
-          'max': canvas_properties['height'],
-        }),
+        'y': core_random_integer(canvas_properties['height']),
       },
     });
 
