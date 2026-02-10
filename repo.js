@@ -1,18 +1,32 @@
 'use strict';
 
+function draw_star(entity){
+    canvas.fillRect(
+      entity.x,
+      entity.y,
+      1,
+      1
+    );
+}
+
+function move_star(entity){
+    entity.x -= entity.speed;
+
+    if(entity.x < 0){
+        entity_remove({
+          'entities': [
+            entity.id,
+          ],
+        });
+    }
+}
+
 function repo_drawlogic(){
     entity_group_modify({
       'groups': [
         'canvas',
       ],
-      'todo': function(entity){
-          canvas.fillRect(
-            entity.x,
-            entity.y,
-            1,
-            1
-          );
-      },
+      'todo': draw_star,
     });
 }
 
@@ -36,16 +50,6 @@ function repo_logic(){
       'groups': [
         'canvas',
       ],
-      'todo': function(entity){
-          entity.x -= entity.speed;
-
-          if(entity.x < 0){
-              entity_remove({
-                'entities': [
-                  entity.id,
-                ],
-              });
-          }
-      },
+      'todo': move_star,
     });
 }
